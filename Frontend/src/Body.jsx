@@ -22,7 +22,7 @@ function Body() {
   };
 
   return (
-    <div className="grid grid-cols-12 gap-6">
+    <div className="grid grid-cols-12">
       <div className="col-span-12 md:col-span-6 flex flex-col justify-center p-6">
         <h1 className="text-4xl font-bold mb-4 text-white">Discover Shops in Pulong Buhangin</h1>
         <p className="mb-4 text-white">Find shops around you!</p>
@@ -50,9 +50,9 @@ function Body() {
           {loading && <p>Searching...</p>}
 
           {!loading && shops.length > 0 && (
-            <div className="grid grid-cols-3   rows-span-3 gap-2 mt-4">
+            <div className="grid grid-cols-3 rows-span-3 gap-2 mt-4">
               {shops.map((shop, index) => (
-                <div key={index} className="border p-2 bg-white rounded shadow text-center text-black">
+                <div key={index} className="border p-2 rounded shadow text-center text-black">
                   {shop.name}
                 </div>
               ))}
@@ -67,25 +67,27 @@ function Body() {
       </div>
 
       {/* Images */}
-      <div className="col-span-6 grid grid-cols-3 gap-2 p-6">
-        <div className="aspect-square">
-          <img src="/image/shop1.jpg" alt="shop1" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
-        </div>
-        <div className="aspect-square">
-          <img src="/image/shop2.jpg" alt="shop2" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
-        </div>
-        <div className="aspect-square">
-          <img src="/image/shop3.webp" alt="shop3" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
-        </div>
-        <div className="aspect-square">
-          <img src="/image/shop4.jpg" alt="shop4" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
-        </div>
-        <div className="col-start-2 col-span-2">
-          <img src="/image/pbmap.png" alt="shop5" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
-        </div>
+      <div className="col-span-6 grid grid-cols-3 gap-4 p-6">
+      <div className="aspect-square">
+        <img src="/image/shop1.jpg" alt="shop1" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
+      </div>
+      <div className="aspect-square">
+        <img src="/image/shop2.jpg" alt="shop2" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
+      </div>
+      <div className="aspect-square">
+        <img src="/image/shop3.webp" alt="shop3" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
+      </div>
+      <div className="aspect-square">
+        <img src="/image/shop4.jpg" alt="shop4" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
+      </div>
+      <div className="aspect-square">
+        <img src="/image/pbmap.png" alt="pb map 1" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
+      </div>
+      <div className="aspect-square">
+        <img src="/image/pbmap.png" alt="pb map 2" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
       </div>
     </div>
-    
+    </div>
   );
 }
 

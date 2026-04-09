@@ -1,10 +1,11 @@
 function Footer() {
     return (
-        <footer className="bg-gray-800 text-white py-2 flex">
-            <div className="text-center text-white-400 text-sm p-4 flex-1">
+        <footer className="bg-gray-800 text-white py-2 w-full absolute bottom-0">
+            <div className="text-center text-sm p-4">
                 &copy; {new Date().getFullYear()} PBshops. All rights reserved.
             </div>
         </footer>
     );
 }
-export default Footer
+
+export default Footer;

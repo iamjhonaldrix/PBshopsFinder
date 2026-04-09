@@ -1,27 +1,37 @@
-import { useState, useEffect } from 'react'
-import Navigator from './Nav.jsx'
-import Body from './Body.jsx';
-import Footer from './Footer.jsx';
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import Navigator from "./Nav.jsx";
+import Body from "./Body.jsx";
+import Signup from "./Signup.jsx";
+import Login from "./Login.jsx";
+import Dashboard from "./Dashboard.jsx";
+import Footer from "./Footer.jsx";
 
-import './App.css'
+function AppWrapper() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/data")
-      .then(res => res.json())
-      .then(data => setMessage(data.message))
-      .catch(err => console.error(err));
-  }, []);
+  const location = useLocation();
+  const hideFooterRoutes = ["/signup", "/login", "/dashboard"];
+  const showFooter = !hideFooterRoutes.includes(location.pathname);
 
   return (
     <>
       <Navigator />
-      <Body />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Body />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+      {showFooter && <Footer />}
     </>
   );
 }
 
-export default App
+export default AppWrapper;
