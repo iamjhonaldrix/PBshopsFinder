@@ -1,6 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 function Body() {
+  const navigate = useNavigate();
+
   const [input, setInput] = useState("");      // what user types
   const [category, setCategory] = useState(""); // submitted search
   const [shops, setShops] = useState([]);
@@ -11,7 +16,7 @@ function Body() {
     setCategory(input.trim());  
     setLoading(true);
     try {
-      const res = await fetch(`http://127.0.0.1:5000/api/shops?category=${input.trim()}`);
+      const res = await fetch(`${BASE_URL}/api/shops?category=${input.trim()}`);
       const data = await res.json();
       setShops(data);
     } catch (err) {
@@ -52,7 +57,11 @@ function Body() {
           {!loading && shops.length > 0 && (
             <div className="grid grid-cols-3 rows-span-3 gap-2 mt-4">
               {shops.map((shop, index) => (
-                <div key={index} className="border p-2 rounded shadow text-center text-black">
+                <div
+                  key={index}
+                  onClick={() => navigate(`/shops/${shop.id}`)}
+                  className="bg-gray-900 text-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 px-6 py-8 text-center font-semibold text-lg cursor-pointer"
+                >
                   {shop.name}
                 </div>
               ))}
@@ -68,25 +77,25 @@ function Body() {
 
       {/* Images */}
       <div className="col-span-6 grid grid-cols-3 gap-4 p-6">
-      <div className="aspect-square">
-        <img src="/image/shop1.jpg" alt="shop1" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
+        <div className="aspect-square">
+          <img src="/image/shop1.jpg" alt="shop1" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
+        </div>
+        <div className="aspect-square">
+          <img src="/image/shop2.jpg" alt="shop2" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
+        </div>
+        <div className="aspect-square">
+          <img src="/image/shop3.webp" alt="shop3" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
+        </div>
+        <div className="aspect-square">
+          <img src="/image/shop4.jpg" alt="shop4" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
+        </div>
+        <div className="aspect-square">
+          <img src="/image/shop5.jpg" alt="pb map 1" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
+        </div>
+        <div className="aspect-square">
+          <img src="/image/pbmap.png" alt="pb map 2" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
+        </div>
       </div>
-      <div className="aspect-square">
-        <img src="/image/shop2.jpg" alt="shop2" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
-      </div>
-      <div className="aspect-square">
-        <img src="/image/shop3.webp" alt="shop3" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
-      </div>
-      <div className="aspect-square">
-        <img src="/image/shop4.jpg" alt="shop4" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
-      </div>
-      <div className="aspect-square">
-        <img src="/image/pbmap.png" alt="pb map 1" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
-      </div>
-      <div className="aspect-square">
-        <img src="/image/pbmap.png" alt="pb map 2" className="w-full h-full object-cover rounded-4xl shadow-xl/40"/>
-      </div>
-    </div>
     </div>
   );
 }

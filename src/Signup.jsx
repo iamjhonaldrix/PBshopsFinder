@@ -1,5 +1,6 @@
-// Signup.jsx
 import { useState } from "react";
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -8,7 +9,7 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://127.0.0.1:5000/api/register", {
+    const response = await fetch(`${BASE_URL}/api/register`,{
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
