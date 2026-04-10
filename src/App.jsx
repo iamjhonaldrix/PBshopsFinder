@@ -6,7 +6,6 @@ import Signup from "./Signup.jsx";
 import Login from "./Login.jsx";
 import Dashboard from "./Dashboard.jsx";
 import Footer from "./Footer.jsx";
-import ShopProfile from "./ShopProfile";
 import Categories from "./Categories";
 
 function AppWrapper() {
