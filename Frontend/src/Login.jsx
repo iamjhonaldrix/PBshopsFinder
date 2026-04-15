@@ -1,5 +1,9 @@
 import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
+
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -10,7 +14,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://127.0.0.1:5000/api/login", {
+    const res = await fetch(`${BASE_URL}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
@@ -57,7 +61,7 @@ export default function Login() {
             Log In
           </button>
         </form>
-        {message && <p className="text-red-600 text-center mt-4">{message}</p>}
+        {message && <p className="text-green-600 text-center mt-4">{message}</p>}
         <p className="mt-6 text-center text-gray-600">
           Don't have an account? <a href="/signup" className="text-black font-semibold hover:underline">Sign Up</a>
         </p>

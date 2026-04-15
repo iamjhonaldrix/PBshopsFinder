@@ -27,13 +27,13 @@ function Navigator() {
             <Link to="/" className="hover:text-yellow-400 hover:scale-110">Home</Link>
             <Link to="/businesses" className="hover:text-yellow-400 hover:scale-110">Businesses</Link>
             <Link to="/categories" className="hover:text-yellow-400 hover:scale-110">See Categories</Link>
-            <Link to="/about" className="hover:text-yellow-400 hover:scale-110">About</Link>
           </>
         )}
 
         {userId && (
           <>
             <Link to="/" className="hover:text-yellow-400 hover:scale-110">Home</Link>
+            <Link to="/businesses" className="hover:text-yellow-400 hover:scale-110">Businesses</Link>
             <Link to="/see-post" className="hover:text-yellow-400 hover:scale-110">See Post</Link>
             <Link to="/data" className="hover:text-yellow-400 hover:scale-110">Data</Link>
             <Link to="/profile" className="hover:text-yellow-400 hover:scale-110">Profile</Link>
@@ -56,15 +56,19 @@ function Navigator() {
             </Link>
           </>
         )}
-
         {userId && (
+          <>
+          <Link to="/dashboard" className="transition bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 hover:scale-110 font-semibold">Dashboard</Link>
           <button
             onClick={handleLogout}
-            className="transition bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 hover:scale-110 font-semibold"
-          >
+            className="transition bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 hover:scale-110 font-semibold">
             Logout
           </button>
-        )}
+          </>
+        )
+        
+        }
+        
       </div>
     </div>
   );

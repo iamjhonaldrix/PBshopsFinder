@@ -6,6 +6,8 @@ import Signup from "./Signup.jsx";
 import Login from "./Login.jsx";
 import Dashboard from "./Dashboard.jsx";
 import Footer from "./Footer.jsx";
+import Categories from "./Categories";
+import Businesses from  "./Businesses.jsx";
 
 function AppWrapper() {
   return (
@@ -17,7 +19,7 @@ function AppWrapper() {
 
 function App() {
   const location = useLocation();
-  const hideFooterRoutes = ["/signup", "/login", "/dashboard"];
+  const hideFooterRoutes = ["/signup", "/login"];
   const showFooter = !hideFooterRoutes.includes(location.pathname);
 
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/businesses" element={ <Businesses />} />
       </Routes>
       {showFooter && <Footer />}
     </>
